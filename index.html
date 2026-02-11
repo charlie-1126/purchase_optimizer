@@ -87,7 +87,7 @@
                     </div>
                     <div class="input-group">
                         <label for="target-pulls">목표 뽑기권:</label>
-                        <input type="number" id="target-pulls" min="0" step="0.01" oninput="syncItemsFromPulls()" />
+                        <input type="number" id="target-pulls" min="0" oninput="syncItemsFromPulls()" />
                     </div>
                     <button onclick="calculateMinCost()" class="btn btn-primary">계산하기</button>
                     <div id="min-result" class="result-box"></div>
