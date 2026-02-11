@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>게임 결제 최대 효율 계산기</title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>게임 결제 최대 효율 계산기</h1>
+
+            <!-- 설정 섹션 -->
+            <section class="settings-section">
+                <h2>설정</h2>
+                <div class="settings-box">
+                    <div>
+                        <label for="preset-select">프리셋:</label>
+                        <select id="preset-select" onchange="loadPreset(this.value)">
+                            <option value="custom">커스텀</option>
+                            <option value="hoyoverse" selected>Hoyoverse</option>
+                            <option value="endfield">명일방주: 엔드필드</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                        <label for="pull-count">뽑기권 환산율:</label>
+                        <input
+                            type="number"
+                            id="pull-count"
+                            value="1"
+                            min="1"
+                            style="width: 80px"
+                            onchange="updatePullRate()"
+                        />
+                        <span>뽑당</span>
+                        <input
+                            type="number"
+                            id="item-count"
+                            value="160"
+                            min="1"
+                            style="width: 80px"
+                            onchange="updatePullRate()"
+                        />
+                        <span>개</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 패키지 정보 섹션 -->
+            <section class="packages-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px">
+                    <h2 style="margin-bottom: 0">패키지 정보</h2>
+                    <div style="display: flex; align-items: center; gap: 8px">
+                        <input
+                            type="checkbox"
+                            id="select-all-checkbox"
+                            onchange="toggleAllFirstPurchase(this.checked)"
+                        />
+                        <label
+                            for="select-all-checkbox"
+                            style="margin: 0; cursor: pointer; font-weight: 600; color: #2d3436"
+                            >초회 전체 선택</label
+                        >
+                    </div>
+                </div>
+                <div id="packages-list"></div>
+                <button onclick="addPackage()" class="btn btn-add-package">+ 패키지 추가</button>
+            </section>
+
+            <!-- 계산 섹션 -->
+            <section class="calculator-section">
+                <div class="calculator-card">
+                    <h2>현재 자금으로 최대 개수 계산</h2>
+                    <div class="input-group">
+                        <label for="current-money">현재 자금 (원):</label>
+                        <input type="number" id="current-money" min="0" max="10000000" />
+                    </div>
+                    <button onclick="calculateMaxItems()" class="btn btn-primary">계산하기</button>
+                    <div id="max-result" class="result-box"></div>
+                </div>
+
+                <div class="calculator-card">
+                    <h2>목표 개수로 최소 금액 계산</h2>
+                    <div class="input-group">
+                        <label for="target-items">목표 개수:</label>
+                        <input type="number" id="target-items" min="0" oninput="syncPullsFromItems()" />
+                    </div>
+                    <div class="input-group">
+                        <label for="target-pulls">목표 뽑기권:</label>
+                        <input type="number" id="target-pulls" min="0" step="0.01" oninput="syncItemsFromPulls()" />
+                    </div>
+                    <button onclick="calculateMinCost()" class="btn btn-primary">계산하기</button>
+                    <div id="min-result" class="result-box"></div>
+                </div>
+            </section>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>

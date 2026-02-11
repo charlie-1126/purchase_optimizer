@@ -1,0 +1,858 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+    background: #f5f6fa;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+section {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.settings-section h2 {
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+.settings-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 1em;
+    border: 1px solid #e9ecef;
+}
+
+.settings-box > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.settings-box label {
+    font-weight: 600;
+    color: #2d3436;
+}
+
+.settings-box input,
+.settings-box select {
+    width: 100px;
+    padding: 6px 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 0.9em;
+    text-align: center;
+    background: white;
+    transition: border-color 0.2s;
+}
+
+.settings-box select {
+    width: auto;
+    min-width: 100px;
+    cursor: pointer;
+}
+
+.settings-box input:focus,
+.settings-box select:focus {
+    outline: none;
+    border-color: #748ffc;
+}
+
+.settings-box span {
+    color: #636e72;
+    font-weight: 500;
+}
+
+.packages-section h2 {
+    text-align: center;
+    color: #1a1a1a;
+}
+
+.btn-add-package {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: #748ffc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-package:hover {
+    background: #5b7cfa;
+}
+
+#packages-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.package-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #e9ecef;
+    overflow: hidden;
+    transition: all 0.2s;
+}
+
+.package-item:hover {
+    border-color: #748ffc;
+    box-shadow: 0 2px 8px rgba(116, 143, 252, 0.1);
+}
+
+.package-item.first-purchase {
+    background: #ffedc9;
+    border-color: #e9ecef;
+}
+
+.package-item.first-purchase:hover {
+    box-shadow: 0 2px 8px rgba(116, 143, 252, 0.1);
+}
+
+.package-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+.package-header span {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.btn-delete {
+    background: transparent;
+    color: #adb5bd;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1.8em;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.btn-delete:hover {
+    color: #e74c3c;
+    transform: scale(1.15);
+}
+
+.reward-inputs {
+    margin: 15px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-row label {
+    flex: 0 0 90px;
+    font-weight: 500;
+    color: #2d3436;
+    font-size: 0.9em;
+}
+
+.reward-input {
+    flex: 1;
+    min-width: 80px;
+    padding: 8px 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.reward-input:focus {
+    outline: none;
+    border-color: #748ffc;
+}
+
+.input-row span {
+    flex: 0 0 auto;
+    margin-left: 5px;
+    color: #636e72;
+    font-size: 0.85em;
+    white-space: nowrap;
+}
+
+.efficiency-display {
+    margin-top: 12px;
+    padding: 10px;
+    background: #e7f0ff;
+    border-radius: 6px;
+    text-align: center;
+    color: #1a1a1a;
+    font-size: 0.85em;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.first-purchase-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    background: white;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.first-purchase-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #d1d5dd;
+}
+
+.first-purchase-checkbox label {
+    cursor: pointer;
+    font-weight: 500;
+    color: #2d3436;
+}
+
+.calculator-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.calculator-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.calculator-card h2 {
+    color: #1a1a1a;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin: 20px 0;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #495057;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #748ffc;
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: #748ffc;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5b7cfa;
+}
+
+.result-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #748ffc;
+    min-height: 60px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: none;
+}
+
+.result-box.show {
+    display: block;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-title {
+    font-weight: 700;
+    color: #6c7add;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.result-details {
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.result-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    color: #2d3436;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.total-summary {
+    margin-top: 15px;
+    padding: 15px;
+    background: #748ffc;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+    }
+
+    section {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .settings-box {
+        font-size: 0.9em;
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .settings-box input,
+    .settings-box select {
+        padding: 5px 8px;
+        font-size: 0.85em;
+    }
+
+    .settings-box select {
+        width: auto;
+        min-width: 90px;
+    }
+
+    #packages-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .package-item {
+        padding: 12px;
+    }
+
+    .package-header span {
+        font-size: 0.95em !important;
+    }
+
+    .btn-delete {
+        width: 24px;
+        height: 24px;
+        font-size: 1.6em;
+    }
+
+    .btn-add-package {
+        padding: 10px;
+        font-size: 0.95em;
+        margin-top: 12px;
+    }
+
+    .reward-inputs {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .input-row {
+        gap: 5px;
+        margin: 8px 0;
+    }
+
+    .input-row label {
+        flex: 0 0 70px;
+        font-size: 0.8em;
+    }
+
+    .reward-input {
+        padding: 6px 8px;
+        font-size: 0.85em;
+        min-width: 60px;
+    }
+
+    .input-row span {
+        font-size: 0.75em;
+    }
+
+    .efficiency-display {
+        font-size: 0.75em;
+        padding: 8px;
+    }
+
+    .first-purchase-checkbox {
+        padding: 8px;
+        margin-top: 8px;
+    }
+
+    .first-purchase-checkbox input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+    }
+
+    .first-purchase-checkbox label {
+        font-size: 0.9em;
+    }
+
+    .calculator-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .calculator-card {
+        padding: 15px;
+    }
+
+    .calculator-card h2 {
+        font-size: 1.1em;
+    }
+
+    .input-group {
+        margin: 15px 0;
+    }
+
+    .input-group label {
+        font-size: 0.9em;
+        margin-bottom: 5px;
+    }
+
+    .input-group input {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .result-box {
+        padding: 15px;
+        margin-top: 15px;
+    }
+
+    .result-title {
+        font-size: 1em;
+    }
+
+    .result-details {
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 0.9em;
+    }
+
+    .result-item {
+        padding: 6px 0;
+        font-size: 0.85em;
+    }
+
+    .total-summary {
+        padding: 12px;
+        margin-top: 12px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    section {
+        padding: 12px;
+    }
+
+    .settings-box {
+        font-size: 0.85em;
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .settings-box input,
+    .settings-box select {
+        font-size: 0.8em;
+        padding: 4px 6px;
+    }
+
+    .settings-box select {
+        min-width: 85px;
+    }
+
+    .package-item {
+        padding: 10px;
+    }
+
+    .package-header span {
+        font-size: 0.85em !important;
+    }
+
+    .btn-delete {
+        width: 22px;
+        height: 22px;
+        font-size: 1.5em;
+    }
+
+    .reward-inputs {
+        padding: 8px;
+    }
+
+    .input-row {
+        gap: 4px;
+        margin: 6px 0;
+    }
+
+    .input-row label {
+        flex: 0 0 55px;
+        font-size: 0.7em;
+    }
+
+    .reward-input {
+        font-size: 0.75em;
+        padding: 5px 6px;
+    }
+
+    .input-row span {
+        font-size: 0.65em;
+    }
+
+    .efficiency-display {
+        font-size: 0.65em;
+        padding: 6px;
+    }
+
+    .calculator-card {
+        padding: 12px;
+    }
+
+    .calculator-card h2 {
+        font-size: 1em;
+    }
+
+    .input-group {
+        margin: 12px 0;
+    }
+
+    .input-group input {
+        padding: 8px;
+        font-size: 0.95em;
+    }
+
+    .btn {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .result-box {
+        padding: 12px;
+    }
+
+    .result-title {
+        font-size: 0.9em;
+    }
+
+    .result-details {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+
+    .result-item {
+        font-size: 0.75em;
+        padding: 5px 0;
+        line-height: 1.4;
+    }
+
+    .total-summary {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    body {
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 0.95em;
+        margin-bottom: 10px;
+    }
+
+    section {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .settings-box {
+        font-size: 0.8em;
+        padding: 6px;
+        gap: 6px;
+    }
+
+    .settings-box input {
+        width: 60px;
+        padding: 4px 6px;
+    }
+
+    .settings-box select {
+        min-width: 80px;
+        font-size: 0.75em;
+        padding: 4px 6px;
+    }
+
+    .package-item {
+        padding: 8px;
+    }
+
+    .package-header span {
+        font-size: 0.8em !important;
+    }
+
+    .btn-delete {
+        width: 20px;
+        height: 20px;
+        font-size: 1.4em;
+    }
+
+    .btn-add-package {
+        padding: 8px;
+        font-size: 0.85em;
+        margin-top: 10px;
+    }
+
+    .reward-inputs {
+        padding: 6px;
+    }
+
+    .input-row {
+        gap: 3px;
+        margin: 5px 0;
+    }
+
+    .input-row label {
+        flex: 0 0 50px;
+        font-size: 0.65em;
+    }
+
+    .reward-input {
+        font-size: 0.7em;
+        padding: 4px 5px;
+    }
+
+    .input-row span {
+        font-size: 0.6em;
+    }
+
+    .efficiency-display {
+        font-size: 0.6em;
+        padding: 5px;
+        margin-top: 8px;
+    }
+
+    .first-purchase-checkbox {
+        padding: 6px;
+        gap: 6px;
+    }
+
+    .first-purchase-checkbox input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+    }
+
+    .first-purchase-checkbox label {
+        font-size: 0.8em;
+    }
+
+    .calculator-card {
+        padding: 10px;
+    }
+
+    .calculator-card h2 {
+        font-size: 0.95em;
+    }
+
+    .input-group {
+        margin: 10px 0;
+    }
+
+    .input-group label {
+        font-size: 0.8em;
+    }
+
+    .input-group input {
+        padding: 7px;
+        font-size: 0.9em;
+    }
+
+    .btn {
+        padding: 9px;
+        font-size: 0.9em;
+    }
+
+    .result-box {
+        padding: 10px;
+        margin-top: 12px;
+    }
+
+    .result-title {
+        font-size: 0.85em;
+        margin-bottom: 8px;
+    }
+
+    .result-details {
+        font-size: 0.75em;
+        padding: 6px;
+        margin-top: 8px;
+    }
+
+    .result-item {
+        font-size: 0.7em;
+        padding: 4px 0;
+        line-height: 1.5;
+    }
+
+    .total-summary {
+        font-size: 0.85em;
+        padding: 8px;
+        margin-top: 10px;
+        line-height: 1.4;
+    }
+}
