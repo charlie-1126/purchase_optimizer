@@ -16,7 +16,13 @@
                 <div class="settings-box">
                     <div>
                         <label for="preset-select">프리셋:</label>
-                        <select id="preset-select" onchange="loadPreset(this.value)">
+                        <select
+                            id="preset-select"
+                            onchange="
+                                loadPreset(this.value);
+                                updatePullRate(false);
+                            "
+                        >
                             <option value="custom">커스텀</option>
                             <option value="hoyoverse" selected>Hoyoverse</option>
                             <option value="endfield">명일방주: 엔드필드</option>

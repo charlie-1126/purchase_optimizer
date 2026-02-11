@@ -44,7 +44,7 @@ let pullCount = 1; // 뽑기 횟수
 let itemCount = 160; // 개수
 
 // 뽑기권 환산율 업데이트
-function updatePullRate() {
+function updatePullRate(type = true) {
     pullCount = parseInt(document.getElementById("pull-count").value) || 1;
     itemCount = parseInt(document.getElementById("item-count").value) || 1;
 
@@ -57,7 +57,9 @@ function updatePullRate() {
 
     renderPackages();
     hideResults();
-    document.getElementById("preset-select").value = "custom";
+    if (type) {
+        document.getElementById("preset-select").value = "custom";
+    }
 }
 
 // 개수를 뽑기권으로 변환
