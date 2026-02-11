@@ -354,7 +354,7 @@ function displayMaxResult(result, budget) {
     `;
 
     result.purchases.forEach((p) => {
-        const type = p.isFirst ? "[첫결제]" : "[일반]";
+        const type = p.isFirst ? "[초회]" : "[일반]";
         html += `
             <div class="result-item">
                 ${p.price.toLocaleString()}원 ${type} × ${p.count}회
@@ -499,7 +499,7 @@ function displayMinResult(result, target) {
     `;
 
     result.purchases.forEach((p) => {
-        const type = p.isFirst ? "[첫결제]" : "[일반]";
+        const type = p.isFirst ? "[초회]" : "[일반]";
         html += `
             <div class="result-item">
                 ${p.price.toLocaleString()}원 ${type} × ${p.count}회
